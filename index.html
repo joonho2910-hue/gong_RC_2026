@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>안녕하세요, [당신의 이름]입니다</title>
+    <title>이준호 - 로봇 및 제어 시스템 엔지니어 포트폴리오</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* 기본 스타일 및 글꼴 설정 */
         body {
             font-family: 'Noto Sans KR', sans-serif;
-            background-color: #f7f9fb;
+            background-color: #f4f6f9;
             color: #333;
             margin: 0;
             padding: 0;
@@ -33,27 +33,28 @@
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            background-color: #ebf2f8;
+            background-color: #e0e7ff;
             margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3em;
-            color: #f06c10;
+            font-size: 4em;
+            color: #4f46e5;
         }
 
         header h1 {
             font-size: 2.5em;
             margin: 0;
+            color: #1e293b;
         }
 
         header h1 span {
-            color: #f06c10;
+            color: #4f46e5; /* 포인트 컬러 (인디고) */
         }
 
         header p {
             font-size: 1.1em;
-            color: #666;
+            color: #475569;
             line-height: 1.6;
             margin-top: 15px;
         }
@@ -61,38 +62,41 @@
         /* 카드 섹션 */
         .card-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
             margin-bottom: 60px;
         }
 
         .card {
-            background-color: #ebf2f8;
+            background-color: #ffffff;
             border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             padding: 30px;
-            border: 1px solid #a1b1c2;
-            transition: transform 0.2s;
+            border-top: 4px solid #4f46e5;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
         }
 
         .card h2 {
             font-size: 1.3em;
-            color: #333;
-            border-bottom: 2px solid #f06c10;
+            color: #1e293b;
+            border-bottom: 2px solid #e2e8f0;
             padding-bottom: 10px;
             margin-top: 0;
+            display: flex;
+            align-items: center;
         }
 
-        .card h2 span {
-            font-size: 0.8em;
-            color: #666;
-            font-weight: 400;
+        .card h2 i {
+            margin-right: 10px;
+            color: #4f46e5;
         }
 
+        /* 리스트 스타일 */
         .card ul {
             list-style: none;
             padding: 0;
@@ -100,84 +104,50 @@
         }
 
         .card ul li {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
+            line-height: 1.5;
         }
 
         .card ul li i {
-            margin-right: 10px;
-            color: #f06c10;
-        }
-
-        .card-icon {
-            font-size: 1.5em;
-            margin-right: 15px;
-            color: #333;
-        }
-
-        /* 프로젝트 카드 세부 스타일 */
-        .project-item {
-            margin-bottom: 15px;
-        }
-
-        .project-thumbnail {
-            width: 100%;
-            height: 100px;
-            background-color: #f7f9fb;
-            border-radius: 10px;
-            margin-bottom: 10px;
-        }
-
-        .project-title {
-            font-weight: bold;
-            color: #333;
-        }
-
-        .project-desc {
+            margin-top: 4px;
+            margin-right: 12px;
+            color: #64748b;
             font-size: 0.9em;
-            color: #666;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #4f46e5;
         }
 
         /* 푸터/연락처 섹션 */
         footer {
-            background-color: #ebf2f8;
-            padding: 40px 20px;
+            background-color: #ffffff;
+            padding: 30px 20px;
             border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            border: 1px solid #a1b1c2;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             text-align: center;
-        }
-
-        footer h3 {
-            font-size: 1.3em;
-            margin-top: 0;
+            color: #475569;
         }
 
         .contact-info {
             display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 20px;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 15px;
         }
 
         .contact-item {
-            display: flex;
-            align-items: center;
-            font-size: 1.1em;
-            color: #333;
+            color: #475569;
             text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.2s;
         }
 
         .contact-item:hover {
-            color: #f06c10;
-        }
-
-        .contact-item i {
-            font-size: 1.5em;
-            margin-right: 10px;
-            color: #f06c10;
+            color: #4f46e5;
         }
     </style>
 </head>
@@ -186,514 +156,55 @@
 <div class="container">
     <header>
         <div class="profile-pic">
-            <i class="fas fa-user-circle"></i>
+            <i class="fas fa-user-astronaut"></i>
         </div>
-        <h1>안녕하세요, <span>[당신의 이름]</span>입니다</h1>
-        <p>창의적인 문제 해결에 열정을 가진 [당신의 직업/역할]입니다.<br>
-           새로운 기술을 배우고 사용자에게 영감을 주는 경험을 만드는 것을 좋아합니다.</p>
+        <h1>안녕하세요, <span>이준호</span>입니다</h1>
+        <p>
+            공주대학교 기계설계공학 전공 | <strong>예비 로봇 및 제어 시스템 엔지니어</strong><br>
+            탄탄한 역학적 이해를 바탕으로 ROS 2를 활용한 로봇 구동 및 제어 시스템을 설계합니다.<br>
+            이론적 계산뿐만 아니라 실제 실험과 데이터를 통한 현상 분석을 즐깁니다.
+        </p>
     </header>
 
     <div class="card-container">
         <div class="card">
-            <h2>SKILLS <span>(기술스택)```html
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>안녕하세요, [당신의 이름]입니다</title>
-    <link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css)">
-    <link href="[https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap](https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap)" rel="stylesheet">
-    <style>
-        /* 기본 스타일 및 글꼴 설정 */
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: #f7f9fb;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* 메인 컨테이너 */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        /* 헤더 섹션 */
-        header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background-color: #ebf2f8;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3em;
-            color: #f06c10;
-        }
-
-        header h1 {
-            font-size: 2.5em;
-            margin: 0;
-        }
-
-        header h1 span {
-            color: #f06c10;
-        }
-
-        header p {
-            font-size: 1.1em;
-            color: #666;
-            line-height: 1.6;
-            margin-top: 15px;
-        }
-
-        /* 카드 섹션 */
-        .card-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-
-        .card {
-            background-color: #ebf2f8;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            padding: 30px;
-            border: 1px solid #a1b1c2;
-            transition: transform 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h2 {
-            font-size: 1.3em;
-            color: #333;
-            border-bottom: 2px solid #f06c10;
-            padding-bottom: 10px;
-            margin-top: 0;
-        }
-
-        .card h2 span {
-            font-size: 0.8em;
-            color: #666;
-            font-weight: 400;
-        }
-
-        .card ul {
-            list-style: none;
-            padding: 0;
-            margin: 20px 0 0;
-        }
-
-        .card ul li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .card ul li i {
-            margin-right: 10px;
-            color: #f06c10;
-        }
-
-        .card-icon {
-            font-size: 1.5em;
-            margin-right: 15px;
-            color: #333;
-        }
-
-        /* 프로젝트 카드 세부 스타일 */
-        .project-item {
-            margin-bottom: 15px;
-        }
-
-        .project-thumbnail {
-            width: 100%;
-            height: 100px;
-            background-color: #f7f9fb;
-            border-radius: 10px;
-            margin-bottom: 10px;
-        }
-
-        .project-title {
-            font-weight: bold;
-            color: #333;
-        }
-
-        .project-desc {
-            font-size: 0.9em;
-            color: #666;
-        }
-
-        /* 푸터/연락처 섹션 */
-        footer {
-            background-color: #ebf2f8;
-            padding: 40px 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            border: 1px solid #a1b1c2;
-            text-align: center;
-        }
-
-        footer h3 {
-            font-size: 1.3em;
-            margin-top: 0;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            font-size: 1.1em;
-            color: #333;
-            text-decoration: none;
-        }
-
-        .contact-item:hover {
-            color: #f06c10;
-        }
-
-        .contact-item i {
-            font-size: 1.5em;
-            margin-right: 10px;
-            color: #f06c10;
-        }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <header>
-        <div class="profile-pic">
-            <i class="fas fa-user-circle"></i>
-        </div>
-        <h1>안녕하세요, <span>[당신의 이름]</span>입니다</h1>
-        <p>창의적인 문제 해결에 열정을 가진 [당신의 직업/역할]입니다.<br>
-           새로운 기술을 배우고 사용자에게 영감을 주는 경험을 만드는 것을 좋아합니다.</p>
-    </header>
-
-    <div class="card-container">
-        <div class="card">
-            <h2>SKILLS <span>(기술스택)</span></h2>
+            <h2><i class="fas fa-tools"></i> ENGINEERING SKILLS</h2>
             <ul>
-                <li><i class="fab fa-python"></i>Python</li>
-                <li><i class="fab fa-js-square"></i>JavaScript</li>
-                <li><i class="fab fa-figma"></i>Figma</li>
-                <li><i class="fas fa-desktop"></i>바스트로 (Bootstrap)</li>
-                <li><i class="fas fa-code"></i>카이마 (개발툴)</li>
-                <li><i class="fas fa-database"></i>데이터마 (데이터분석)</li>
-                <li><i class="fas fa-tasks"></i>프로젝트</li>
-                <li><i class="fas fa-paint-brush"></i>로고앤드</li>
+                <li><i class="fas fa-check"></i><div><span class="highlight">Robotics & Software:</span> ROS 2 (Jazzy Jalisco), Ubuntu 환경에서의 rclpy 노드 및 서비스 클라이언트 구현, URDF 모델링</div></li>
+                <li><i class="fas fa-check"></i><div><span class="highlight">Mechanical Engineering:</span> 유체역학(관로유동, 경계층), 열전달, 기계가공 및 절삭이론(표면조도 분석)</div></li>
+                <li><i class="fas fa-check"></i><div><span class="highlight">Data Analysis & Tools:</span> MS Excel(산점도 및 수치 해석), phyphox를 활용한 센서 데이터 수집</div></li>
             </ul>
         </div>
 
         <div class="card">
-            <h2>EXPERIENCE <span>(경험)</span></h2>
+            <h2><i class="fas fa-flask"></i> PROJECTS & LABS</h2>
             <ul>
-                <li><i class="fas fa-briefcase"></i>청업 직업 역할 <span>(2013-2015)</span></li>
-                <li><i class="fas fa-search"></i>검색 결과 개선 및 운영 <span>(2012-2024)</span></li>
-                <li><i class="fas fa-user-secret"></i>집사 직업 역언 <span>(2011-2023)</span></li>
+                <li><i class="fas fa-robot"></i><div><span class="highlight">ROS 2 로봇 패키지 'Pinky' 개발:</span> RViz 상에서 URDF, mesh 파일(STL/DAE) 및 LiDAR 센서 연동, 디버깅 수행</div></li>
+                <li><i class="fas fa-wind"></i><div><span class="highlight">유체 및 열전달 실험:</span> 피토관(Pitot tube)을 이용한 풍동 내부 압력 및 속도 분포 측정, P.A. Hilton H920 장비를 활용한 강제 대류 실험</div></li>
+                <li><i class="fas fa-chart-line"></i><div><span class="highlight">진동 측정 실험 설계:</span> 스마트폰 앱(phyphox)을 활용해 자전거의 단일 충격 응답을 측정하고 감쇠비(Damping ratio)를 도출하는 실험 기획</div></li>
             </ul>
         </div>
 
         <div class="card">
-            <h2>PROJECTS <span>(프로젝트)</span></h2>
-            
-            <div class="project-item">
-                <div class="project-thumbnail"></div>
-                <div class="project-title">에일 프로젝트</div>
-                <div class="project-desc">당신의 메일 프로젝트 전차의 활력을 빕니다.</div>
-            </div>
-
-            <div class="project-item">
-                <div class="project-thumbnail"></div>
-                <div class="project-title">프로젝트</div>
-                <div class="project-desc">이름만 소통 프로젝트, 더 많은 연락이 좋아합니다.</div>
-            </div>
-
-            <div class="project-item">
-                <div class="project-thumbnail"></div>
-                <div class="project-title">프로젝트 아인트</div>
-                <div class="project-desc">사각의 사용에 영감을 주는 점을 좋아합니다.```html
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>안녕하세요, [당신의 이름]입니다</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* 기본 스타일 및 글꼴 설정 */
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: #f7f9fb;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* 메인 컨테이너 */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        /* 헤더 섹션 */
-        header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background-color: #ebf2f8;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3em;
-            color: #f06c10;
-        }
-
-        header h1 {
-            font-size: 2.5em;
-            margin: 0;
-        }
-
-        header h1 span {
-            color: #f06c10;
-        }
-
-        header p {
-            font-size: 1.1em;
-            color: #666;
-            line-height: 1.6;
-            margin-top: 15px;
-        }
-
-        /* 카드 섹션 */
-        .card-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-
-        .card {
-            background-color: #ebf2f8;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            padding: 30px;
-            border: 1px solid #a1b1c2;
-            transition: transform 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h2 {
-            font-size: 1.3em;
-            color: #333;
-            border-bottom: 2px solid #f06c10;
-            padding-bottom: 10px;
-            margin-top: 0;
-        }
-
-        .card h2 span {
-            font-size: 0.8em;
-            color: #666;
-            font-weight: 400;
-        }
-
-        .card ul {
-            list-style: none;
-            padding: 0;
-            margin: 20px 0 0;
-        }
-
-        .card ul li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .card ul li i {
-            margin-right: 10px;
-            color: #f06c10;
-        }
-
-        .card-icon {
-            font-size: 1.5em;
-            margin-right: 15px;
-            color: #333;
-        }
-
-        /* 프로젝트 카드 세부 스타일 */
-        .project-item {
-            margin-bottom: 15px;
-        }
-
-        .project-thumbnail {
-            width: 100%;
-            height: 100px;
-            background-color: #f7f9fb;
-            border-radius: 10px;
-            margin-bottom: 10px;
-        }
-
-        .project-title {
-            font-weight: bold;
-            color: #333;
-        }
-
-        .project-desc {
-            font-size: 0.9em;
-            color: #666;
-        }
-
-        /* 푸터/연락처 섹션 */
-        footer {
-            background-color: #ebf2f8;
-            padding: 40px 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            border: 1px solid #a1b1c2;
-            text-align: center;
-        }
-
-        footer h3 {
-            font-size: 1.3em;
-            margin-top: 0;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            font-size: 1.1em;
-            color: #333;
-            text-decoration: none;
-        }
-
-        .contact-item:hover {
-            color: #f06c10;
-        }
-
-        .contact-item i {
-            font-size: 1.5em;
-            margin-right: 10px;
-            color: #f06c10;
-        }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <header>
-        <div class="profile-pic">
-            <i class="fas fa-user-circle"></i>
-        </div>
-        <h1>안녕하세요, <span>[당신의 이름]</span>입니다</h1>
-        <p>창의적인 문제 해결에 열정을 가진 [당신의 직업/역할]입니다.<br>
-           새로운 기술을 배우고 사용자에게 영감을 주는 경험을 만드는 것을 좋아합니다.</p>
-    </header>
-
-    <div class="card-container">
-        <div class="card">
-            <h2>SKILLS <span>(기술스택)</span></h2>
+            <h2><i class="fas fa-star"></i> INTERESTS & HOBBIES</h2>
             <ul>
-                <li><i class="fab fa-python"></i>Python</li>
-                <li><i class="fab fa-js-square"></i>JavaScript</li>
-                <li><i class="fab fa-figma"></i>Figma</li>
-                <li><i class="fas fa-desktop"></i>바스트로 (Bootstrap)</li>
-                <li><i class="fas fa-code"></i>카이마 (개발툴)</li>
-                <li><i class="fas fa-database"></i>데이터마 (데이터분석)</li>
-                <li><i class="fas fa-tasks"></i>프로젝트</li>
-                <li><i class="fas fa-paint-brush"></i>로고앤드</li>
+                <li><i class="fas fa-biking"></i><div><span class="highlight">Mountain Biking (MTB):</span> RockShox, ÖHLINS 등 고성능 서스펜션의 강성과 댐핑 등 기계적 특성 분석 및 세팅</div></li>
+                <li><i class="fas fa-gamepad"></i><div><span class="highlight">Game Mechanics:</span> '몬스터 길들이기: 스타 다이브' 장비 시스템 및 특성 중첩 효율 수치 분석</div></li>
+                <li><i class="fas fa-book"></i><div><span class="highlight">Subculture Lore:</span> Fate 시리즈(stay night, Zero, strange Fake 등)의 정교한 세계관 및 프란체스카 등 캐릭터 설정 탐구</div></li>
             </ul>
-        </div>
-
-        <div class="card">
-            <h2>EXPERIENCE <span>(경험)</span></h2>
-            <ul>
-                <li><i class="fas fa-briefcase"></i>청업 직업 역할 <span>(2013-2015)</span></li>
-                <li><i class="fas fa-search"></i>검색 결과 개선 및 운영 <span>(2012-2024)</span></li>
-                <li><i class="fas fa-user-secret"></i>집사 직업 역언 <span>(2011-2023)</span></li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h2>PROJECTS <span>(프로젝트)</span></h2>
-            
-            <div class="project-item">
-                <div class="project-thumbnail"></div>
-                <div class="project-title">에일 프로젝트</div>
-                <div class="project-desc">당신의 메일 프로젝트 전차의 활력을 빕니다.</div>
-            </div>
-
-            <div class="project-item">
-                <div class="project-thumbnail"></div>
-                <div class="project-title">프로젝트</div>
-                <div class="project-desc">이름만 소통 프로젝트, 더 많은 연락이 좋아합니다.</div>
-            </div>
-
-            <div class="project-item">
-                <div class="project-thumbnail"></div>
-                <div class="project-title">프로젝트 아인트</div>
-                <div class="project-desc">사각의 사용에 영감을 주는 점을 좋아합니다.</div>
-            </div>
         </div>
     </div>
 
     <footer>
-        <h3>CONTACT</h3>
+        <p>미래를 설계하는 로봇 공학도 이준호입니다. 더 많은 이야기는 아래 링크에서 확인해 주세요!</p>
         <div class="contact-info">
-            <a href="https://github.com/yourusername" class="contact-item" target="_blank">
-                <i class="fab fa-github"></i>
-                GitHub @yourusername
-            </a>
-            <a href="https://linkedin.com/in/yourusername" class="contact-item" target="_blank">
-                <i class="fab fa-linkedin"></i>
-                LinkedIn @yourusername
-            </a>
-            <a href="mailto:your.email@example.com" class="contact-item">
-                <i class="fas fa-envelope"></i>
-                your.email@example.com
-            </a>
+            <a href="https://github.com/yourusername" class="contact-item" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            <a href="mailto:your.email@example.com" class="contact-item"><i class="fas fa-envelope"></i> Email</a>
         </div>
     </footer>
 </div>
 
 </body>
 </html>
+
+```
