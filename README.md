@@ -42,6 +42,6 @@
 3교시 : 함수 작성, type hint, doc string, retuen
 4교시 : 인자, 포지셔널 인자, 가변 인자, 디폴트 인자
 5교시 : 재귀 함수
-6교시 : lambda
-7교시 :
-8교시 :
+6교시 : lambda 
+7교시 : generator
+8교시 : time_decorator
