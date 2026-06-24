@@ -27,3 +27,21 @@
 3교시 : github io 페이지 만들기                     
 4교시 : elif else, 삼항 연산자, false로 변환되는 예                                           
 5교시 : 
+6교시 :
+7교시 :
+8교시 :
+
+---
+
+2026-06-24
+
+---
+
+1교시 : while loop
+2교시 : 사전 평가 시험 및 conticnue, break
+3교시 : 함수 작성, type hint, doc string, retuen
+4교시 : 인자, 포지셔널 인자, 가변 인자, 디폴트 인자
+5교시 : 재귀 함수
+6교시 : lambda
+7교시 :
+8교시 :
