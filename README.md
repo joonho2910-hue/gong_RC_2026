@@ -45,3 +45,18 @@
 6교시 : lambda 
 7교시 : generator
 8교시 : time_decorator
+
+---
+
+2026-06-25
+
+---
+
+1교시 : pickle
+2교시 : 클래스_딕션너리
+3교시 : 스페셜 메소드
+4교시 : 클래스 변수
+5교시 : 클래스 메소드
+6교시 : destructor, del, gc.collect
+7교시 : property, setter, getter, 상속
+8교시 : 모듈 및 배포, random 표준 모듈

@@ -8,7 +8,12 @@ class SimpleIter:
     def __iter__(self):
         return self
     
-    def __next__(self):       
+    def __next__(self):
+        if self.current >= self.end:
+            raise StopIteration
+        value = self.current
+        self.current +=1
+        return value       
         
 
 def main():
@@ -16,8 +21,8 @@ def main():
     print(isinstance(iter, Iterable))
     print(isinstance("aa", str))
     print(isinstance("aa", object))
-    # for v in iter
-    #    print(v)
+    for v in iter:
+        print(v)
 
 
 if __name__ == "__main__":
