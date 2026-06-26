@@ -22,6 +22,7 @@ def main():
     p.test()
     print(p.value)
     print(p.value2)
+    c = Child()
     c.test()
     print(c.value)
     print(c.value2)
