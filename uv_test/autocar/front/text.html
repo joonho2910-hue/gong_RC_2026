@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoCar 리모컨</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="controller-container">
+        <div class="status-bar">
+            <div class="status-item" id="connection-status">
+                <span class="dot green"></span> 연결됨
+            </div>
+            <div class="status-item" id="battery-status">
+                🔋 배터리: 85%
+            </div>
+        </div>
+
+        <div class="d-pad">
+            <div class="row">
+                <button class="btn btn-move" id="btn-forward">▲<br>앞으로</button>
+            </div>
+            <div class="row middle-row">
+                <button class="btn btn-turn" id="btn-left">◀<br>좌회전</button>
+                <button class="btn btn-stop" id="btn-stop">■<br>정지</button>
+                <button class="btn btn-turn" id="btn-right">▶<br>우회전</button>
+            </div>
+            <div class="row">
+                <button class="btn btn-move" id="btn-backward">▼<br>뒤로</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
