@@ -21,39 +21,52 @@ import threading
 import time
 from flask import Flask, Response
 
-# 사용자님의 카메라 설정 모듈 (같은 폴더에 Util.py가 있어야 합니다)
+# 사용자님의 카메라 설정 모듈
+print("1. 라이브러리 로딩 완료!") # <--- 추가
+
 import Util
+print("2. Util 모듈 로딩 완료!")  # <--- 추가
 
 app = Flask(__name__)
 
-# 스레드 간 데이터 공유를 위한 전역 변수
+# 스레드 간 영상 데이터를 안전하게 공유하기 위한 변수
 output_frame = None
 lock = threading.Lock()
 
 def capture_frames():
-    """백그라운드 스레드에서 계속해서 카메라 프레임을 읽고 압축하는 함수"""
+    """백그라운드 스레드에서 카메라 프레임을 읽고 60%로 압축하는 함수"""
     global output_frame, lock
     
-    # 1. 사용자님의 카메라 초기화 코드 적용
+    # 1. 카메라 초기화 (주신 코드 기준)
     cam = Util.gstrmer(width=640, height=480, fps=30, flip=0)
     cap = cv2.VideoCapture(cam, cv2.CAP_GSTREAMER)
     
+    if not cap.isOpened():
+        print("❌ 에러: 카메라를 찾을 수 없거나 열 수 없습니다! 물리적 선 연결을 확인하세요.")
+        return
+
+    print("✅ 카메라 캡처가 정상적으로 시작되었습니다.")
+
     while True:
         ret, frame = cap.read()
+        
+        # 2. 터미널 폭주 방지 (프레임을 못 읽었을 때)
         if not ret:
+            print("⚠️ 프레임 읽기 실패. 카메라 상태 확인 중...")
+            time.sleep(1)  # 1초 대기하여 터미널이 점(.)으로 도배되는 것을 막습니다.
             continue
             
-        # 2. JPG 압축 60% 설정
+        # 3. JPG 압축 60% 설정
         encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 60]
-        ret, buffer = cv2.imencode('.jpg', frame, encode_param)
+        ret_encode, buffer = cv2.imencode('.jpg', frame, encode_param)
         
-        if ret:
-            # 3. 안전하게 전역 변수에 압축된 이미지 데이터 업데이트
+        # 4. 압축 성공 시 전역 변수에 저장 (스레드 충돌 방지를 위해 lock 사용)
+        if ret_encode:
             with lock:
                 output_frame = buffer.tobytes()
 
 def generate_video():
-    """클라이언트(웹 브라우저)에게 압축된 이미지를 연속으로 보내주는 제너레이터"""
+    """웹 브라우저로 압축된 프레임을 쏴주는 제너레이터 함수"""
     global output_frame, lock
     
     while True:
@@ -62,38 +75,27 @@ def generate_video():
                 continue
             frame_data = output_frame
             
-        # 브라우저가 인식할 수 있는 실시간 스트리밍 포맷(MJPEG)으로 데이터 포장
+        # MJPEG 스트리밍 포맷으로 데이터 전송
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame_data + b'\r\n')
         
-        # CPU 과부하 방지를 위한 아주 짧은 대기 시간
+        # CPU 과부하 방지
         time.sleep(0.01)
 
-# /video 주소로 접속하면 스트리밍 데이터 전송
+# 5. /video 주소로 접속하면 스트리밍 시작
 @app.route('/video')
 def video_feed():
-    # multipart/x-mixed-replace 는 화면을 덮어씌우면서 영상을 재생하게 해주는 마법의 설정입니다.
     return Response(generate_video(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
-# 편의를 위해 기본 주소(/)로 접속 시 영상을 볼 수 있는 웹 페이지 띄우기
-@app.route('/')
-def index():
-    return '''
-    <html>
-        <head><title>AutoCar Camera</title></head>
-        <body style="background-color:black; color:white; text-align:center;">
-            <h1>🚗 AutoCar 실시간 카메라</h1>
-            <img src="/video" style="border: 2px solid white; border-radius: 10px;">
-        </body>
-    </html>
-    '''
-
 if __name__ == '__main__':
-    # Flask 서버를 켜기 전에 카메라 캡처 스레드를 먼저 시작 (데몬 스레드로 설정하여 메인 종료 시 함께 종료)
+    # 6. Flask 서버를 켜기 전에 백그라운드에서 카메라 스레드 먼저 실행
     t = threading.Thread(target=capture_frames, daemon=True)
     t.start()
     
-    print("🚀 비디오 스트리밍 서버가 시작되었습니다! http://[소다IP]:5000 으로 접속하세요.")
+    print("=========================================================")
+    print("🚀 스트리밍 서버 시작! 웹 브라우저에서 아래 주소로 접속하세요:")
+    print("👉 http://[RC카의_IP주소]:5000/video")
+    print("=========================================================")
     
-    # 5000번 포트로 API 열기 (하드웨어 제어 시 debug=True를 켜면 카메라 충돌이 날 수 있어 False 유지 권장)
+    # 7. 5000번 포트로 서버 열기
     app.run(host='0.0.0.0', port=5000, debug=False, threaded=True)
