@@ -24,8 +24,12 @@ from flask import Flask, Response
 # 사용자님의 카메라 설정 모듈
 print("1. 라이브러리 로딩 완료!") # <--- 추가
 
-import Util
-print("2. Util 모듈 로딩 완료!")  # <--- 추가
+try:
+    from pop import Util
+    print("2. Util 패키지 모듈 로딩 완료!")
+except Exception:
+    from pop import Util
+    print("2. Util 단독 모듈 로딩 완료!")
 
 app = Flask(__name__)
 
